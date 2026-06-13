@@ -277,6 +277,37 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .prose p { margin: 0 0 20px; }
 .prose strong { color: var(--dusk); }
 
+/* Founder block (photo + bio) ---------------------------------------- */
+.founder {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: clamp(28px, 5vw, 56px);
+  align-items: start;
+  margin-top: 8px;
+}
+.founder-photo img {
+  width: 240px;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--mulberry);   /* signature mulberry top edge */
+  border-radius: 3px;
+}
+.founder-role {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ash);
+  font-weight: 600;
+  margin: 0 0 18px;
+}
+.founder-bio p { color: var(--chrysalis); max-width: 54ch; }
+.founder-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px; }
+@media (max-width: 680px) {
+  .founder { grid-template-columns: 1fr; }
+  .founder-photo img { width: 200px; }
+}
+
 /* Big pull-quote ------------------------------------------------------ */
 .quote {
   font-family: var(--font-display);

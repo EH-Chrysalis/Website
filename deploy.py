@@ -38,7 +38,7 @@ if not (HOST and USER and PW):
 
 # Only these files are ever uploaded.
 FILES = ["index.html", "about.html", "approach.html", "contact.html", "privacy.html", "styles.css", "script.js",
-         "favicon.svg", "favicon-32.png", "apple-touch-icon.png", "og-image.png"]
+         "favicon.svg", "favicon-32.png", "apple-touch-icon.png", "og-image.png", "rupesh.jpg"]
 
 action = sys.argv[1] if len(sys.argv) > 1 else "upload"
 

@@ -20,7 +20,7 @@ jobs:
         run: |
           mkdir -p dist
           cp index.html about.html approach.html contact.html privacy.html styles.css script.js dist/
-          cp favicon.svg favicon-32.png apple-touch-icon.png og-image.png dist/
+          cp favicon.svg favicon-32.png apple-touch-icon.png og-image.png rupesh.jpg dist/
           ls -la dist
 
       - name: Upload dist/ to htdocs over SFTP
