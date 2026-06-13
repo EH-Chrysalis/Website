@@ -629,6 +629,82 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 }
 
 /* =====================================================================
+   The six stages — one continuous timeline (Approach)
+   Sequential, so the stages are strung on a single line that draws
+   concept→supply when scrolled into view.
+   ===================================================================== */
+.flow {
+  list-style: none;
+  margin: 46px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 22px;
+}
+.flow-step { position: relative; text-align: center; padding-top: 8px; }
+.flow-node {
+  position: relative;
+  z-index: 1;
+  width: 46px;
+  height: 46px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--cream-panel);     /* matches the panel so the node rings the line */
+  border: 2px solid var(--mulberry);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--mulberry);
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.flow-step:hover .flow-node { transform: scale(1.08); background: var(--mulberry); color: var(--wing-cream); }
+.flow-body .step-stage { margin-top: 0; }
+.flow-body h3 { font-size: 1.2rem; margin: 6px 0 8px; color: var(--dusk); }
+.flow-body p { margin: 0; color: var(--chrysalis); font-size: 0.9rem; }
+
+/* The connecting line: each step draws a connector to the next node's center.
+   Default (and reduced-motion) state is the full mulberry line. */
+.flow-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 31px;                      /* node center: 8px pad + 46/2 */
+  left: 50%;
+  width: calc(100% + 22px);       /* column width + gap → reaches the next node */
+  height: 2px;
+  background: var(--mulberry);
+  z-index: 0;
+}
+
+/* When the section scrolls in (JS adds .reveal/.in to its container), the
+   line draws from 01 to 06. Reduced-motion users get no .reveal, so they
+   simply see the finished line above. */
+.reveal .flow-step:not(:last-child)::after {
+  background: var(--line);
+  transition: background 0.55s ease;
+}
+.reveal.in .flow-step:not(:last-child)::after { background: var(--mulberry); }
+.reveal .flow-step:nth-child(2)::after { transition-delay: 0.15s; }
+.reveal .flow-step:nth-child(3)::after { transition-delay: 0.30s; }
+.reveal .flow-step:nth-child(4)::after { transition-delay: 0.45s; }
+.reveal .flow-step:nth-child(5)::after { transition-delay: 0.60s; }
+
+/* Below the desktop width, the line stands up into a vertical timeline. */
+@media (max-width: 1024px) {
+  .flow { grid-template-columns: 1fr; gap: 0; }
+  .flow-step { text-align: left; padding: 0 0 30px 66px; min-height: 46px; }
+  .flow-node { position: absolute; top: 0; left: 0; margin: 0; }
+  .flow-step:not(:last-child)::after {
+    top: 46px; left: 22px;
+    width: 2px; height: calc(100% - 46px);
+  }
+  .flow-body h3 { font-size: 1.25rem; }
+  .flow-body p { font-size: 0.98rem; }
+}
+
+/* =====================================================================
    Filter chips (Selected work)
    ===================================================================== */
 .filterbar { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
