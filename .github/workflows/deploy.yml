@@ -1,0 +1,33 @@
+name: Deploy to Network Solutions
+
+# Runs on every push to main, and can also be triggered by hand from the
+# Actions tab. It uploads the website files to the htdocs folder over FTP.
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Upload changed files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          # Credentials come from the repo's encrypted Secrets — never in code.
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # The website's public root on Network Solutions.
+          server-dir: /htdocs/
+          # Don't ship repo plumbing or deploy tooling to the web server.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/README.md
+            **/deploy.sh
+            **/.deploy-secrets*
+            **/.DS_Store
