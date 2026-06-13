@@ -320,6 +320,17 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .form-note { display: inline-block; margin-left: 14px; font-size: 0.9rem; color: var(--ash); }
 @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
 
+/* Case-study grid: centered flex so an incomplete last row balances
+   (e.g. 5 cards → 3 centered, then 2 centered beneath). */
+.case-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 46px;
+}
+.case-grid .card { flex: 0 1 330px; }
+
 /* Two-column prose (About) ------------------------------------------- */
 .split {
   display: grid;
