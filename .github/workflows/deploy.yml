@@ -1,7 +1,7 @@
 name: Deploy to Network Solutions
 
 # Runs on every push to main, and can also be triggered by hand from the
-# Actions tab. Uploads the website files to htdocs over plain FTP using lftp.
+# Actions tab. Uploads ONLY the website files to htdocs over FTP.
 on:
   push:
     branches: [ main ]
@@ -14,10 +14,18 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
+      # Copy only the real website files into a clean folder. Nothing else
+      # (no .git, no .github, no deploy tooling) can possibly be uploaded.
+      - name: Stage website files
+        run: |
+          mkdir -p dist
+          cp index.html about.html approach.html styles.css script.js dist/
+          ls -la dist
+
       - name: Install lftp
         run: sudo apt-get update -qq && sudo apt-get install -y lftp
 
-      - name: Upload site to htdocs over FTP
+      - name: Upload dist/ to htdocs over FTP
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
@@ -31,11 +39,5 @@ jobs:
             set net:max-retries 3;
             set net:reconnect-interval-base 5;
             open -u \"$FTP_USERNAME\",\"$FTP_PASSWORD\" \"$FTP_SERVER\";
-            mirror --reverse --verbose \
-              --exclude-glob .git* \
-              --exclude .github/ \
-              --exclude-glob .deploy-secrets* \
-              --exclude-glob deploy.sh \
-              --exclude-glob README.md \
-              ./ /htdocs/;
+            mirror --reverse --verbose dist/ /htdocs/;
           "
