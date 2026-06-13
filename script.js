@@ -89,7 +89,7 @@
         "\n" + msg + "\n";
 
       window.location.href =
-        "mailto:info@elephanthawk.com?subject=" + encodeURIComponent(subject) +
+        "mailto:office@elephanthawk.com?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
     });
   }
