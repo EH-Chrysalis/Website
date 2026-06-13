@@ -329,7 +329,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   gap: 24px;
   margin-top: 46px;
 }
-.case-grid .card { flex: 0 1 330px; }
+.case-grid .card { flex: 0 1 310px; }
 
 /* Two-column prose (About) ------------------------------------------- */
 .split {
