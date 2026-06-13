@@ -93,4 +93,79 @@
         "&body=" + encodeURIComponent(body);
     });
   }
+
+  /* --- 5. Count-up stats ----------------------------------------------
+     When the proof strip scrolls into view, the numeric stats tick up
+     from zero. Non-numeric stats (e.g. "3–5×") are left untouched.
+     If motion is reduced or IntersectionObserver is missing, the final
+     numbers are simply shown as written. */
+  if (!prefersReduced && "IntersectionObserver" in window) {
+    var statsEl = document.querySelector(".stats");
+    if (statsEl) {
+      var counters = statsEl.querySelectorAll(".num[data-count]");
+      // Show 0 up front so the count-up is visible, not a flash of the final value.
+      counters.forEach(function (el) {
+        el.textContent = "0" + (el.getAttribute("data-suffix") || "");
+      });
+
+      var runCount = function (el) {
+        var target = parseInt(el.getAttribute("data-count"), 10);
+        var suffix = el.getAttribute("data-suffix") || "";
+        var duration = 1300, start = null;
+        var tick = function (ts) {
+          if (start === null) start = ts;
+          var p = Math.min((ts - start) / duration, 1);
+          // ease-out so it decelerates into the final number
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+
+      var statsIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            counters.forEach(runCount);
+            statsIO.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      statsIO.observe(statsEl);
+    }
+  }
+
+  /* --- 6. Reveal the metamorphosis dividers on scroll ----------------- */
+  if (!prefersReduced && "IntersectionObserver" in window) {
+    var dividers = document.querySelectorAll(".metamorph-divider");
+    var divIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          divIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    dividers.forEach(function (el) { divIO.observe(el); });
+  }
+
+  /* --- 7. Filter the Selected Work cards ------------------------------
+     Clicking a chip shows only the matching cards (or all). Pure
+     show/hide — no cards are removed from the DOM, so it's reversible
+     and screen-reader friendly. */
+  var chips = document.querySelectorAll(".filterbar .chip");
+  var caseCards = document.querySelectorAll(".case-grid .card");
+  if (chips.length && caseCards.length) {
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        var filter = chip.getAttribute("data-filter");
+        chips.forEach(function (c) { c.classList.remove("active"); });
+        chip.classList.add("active");
+        caseCards.forEach(function (card) {
+          var show = filter === "all" || card.getAttribute("data-cat") === filter;
+          card.classList.toggle("is-hidden", !show);
+        });
+      });
+    });
+  }
 })();

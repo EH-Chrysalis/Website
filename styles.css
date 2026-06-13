@@ -320,16 +320,47 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .form-note { display: inline-block; margin-left: 14px; font-size: 0.9rem; color: var(--ash); }
 @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
 
-/* Case-study grid: centered flex so an incomplete last row balances
-   (e.g. 5 cards → 3 centered, then 2 centered beneath). */
+/* Case-study grid: two even columns, with a wide "featured" card that
+   spans both. 1 featured + 4 = no orphan. Because hidden (filtered) cards
+   collapse out of the grid, every filter state stays balanced too:
+   All = featured + 2×2 · Industry = featured + 2 · Innovators = clean 2-up. */
 .case-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
   margin-top: 46px;
 }
-.case-grid .card { flex: 0 1 310px; }
+
+/* The featured case: spans the full width and splits into story (left)
+   and headline outcome (right) on wide screens. */
+.case-grid .card--featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(22px, 4vw, 52px);
+  align-items: center;
+  background: var(--cream-panel);
+  border-top: 4px solid var(--mulberry);   /* signature mulberry edge */
+}
+.card--featured .feat-main h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); margin-top: 8px; }
+.card--featured .feat-aside .case-outcome {
+  margin: 0;
+  padding: 22px 24px;
+  border-top: 0;
+  border-left: 3px solid var(--mulberry);
+  background: var(--wing-cream);
+  border-radius: 8px;
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+}
+
+/* Stack the featured card on smaller screens, then drop the whole grid
+   to a single column on phones. */
+@media (max-width: 820px) {
+  .case-grid .card--featured { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .case-grid { grid-template-columns: 1fr; }
+}
 
 /* Two-column prose (About) ------------------------------------------- */
 .split {
@@ -497,9 +528,62 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   50%      { background-position: 100% 50%; }
 }
 
+/* The hero moth gently floats and breathes, so it reads as alive rather
+   than a static logo. Slow and small on purpose — presence, not motion. */
+.hero-art svg {
+  animation: mothFloat 9s ease-in-out infinite;
+  transform-origin: 50% 45%;
+  will-change: transform;
+}
+@keyframes mothFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  50%      { transform: translateY(-14px) rotate(-0.6deg) scale(1.012); }
+}
+
+/* =====================================================================
+   Metamorphosis thread — a recurring caterpillar→chrysalis→moth motif
+   that lets scrolling the page walk the transformation.
+   ===================================================================== */
+.metamorph-divider {
+  display: flex;
+  justify-content: center;
+  padding-block: clamp(28px, 5vw, 52px);
+  /* slides/fades in when scrolled into view (JS adds .in) */
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.metamorph-divider.in { opacity: 1; transform: none; }
+.metamorph-divider svg { width: clamp(210px, 42%, 300px); height: auto; }
+
+/* =====================================================================
+   Filter chips (Selected work)
+   ===================================================================== */
+.filterbar { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.chip {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 9px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--chrysalis);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.chip:hover { border-color: var(--mulberry); color: var(--mulberry); }
+.chip.active { background: var(--mulberry); color: var(--wing-cream); border-color: var(--mulberry); }
+/* Cards filtered out collapse smoothly out of the grid */
+.case-grid .card { transition: border-color 0.15s ease, transform 0.15s ease, opacity 0.3s ease; }
+.case-grid .card.is-hidden { display: none; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
   .hero { animation: none; }
+  .hero-art svg { animation: none; }
   .reveal { opacity: 1; transform: none; }
+  .metamorph-divider { opacity: 1; transform: none; }
 }
