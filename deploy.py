@@ -37,7 +37,8 @@ if not (HOST and USER and PW):
     sys.exit("ERROR: FTP_HOST, FTP_USER, FTP_PASS must all be set in .deploy-secrets.")
 
 # Only these files are ever uploaded.
-FILES = ["index.html", "about.html", "approach.html", "styles.css", "script.js"]
+FILES = ["index.html", "about.html", "approach.html", "styles.css", "script.js",
+         "favicon.svg", "favicon-32.png", "apple-touch-icon.png"]
 
 action = sys.argv[1] if len(sys.argv) > 1 else "upload"
 
