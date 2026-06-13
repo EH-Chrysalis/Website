@@ -58,4 +58,39 @@
 
     blocks.forEach(function (el) { io.observe(el); });
   }
+
+  /* --- 4. Contact form → compose a pre-filled email --------------------
+     The site is static, so there is no server. On submit we build a
+     mailto: link with the structured fields and open the visitor's own
+     email client. Nothing is stored. */
+  var sendBtn = document.getElementById("cf-send");
+  if (sendBtn) {
+    sendBtn.addEventListener("click", function () {
+      var val = function (id) {
+        var el = document.getElementById(id);
+        return el ? el.value.trim() : "";
+      };
+      var first = val("cf-first"), last = val("cf-last"), email = val("cf-email"),
+          phone = val("cf-phone"), type = val("cf-type"), msg = val("cf-msg");
+      var note = document.getElementById("cf-note");
+
+      if (!first || !last || !email || !msg) {
+        if (note) note.textContent = "Please add your name, email, and message.";
+        return;
+      }
+      if (note) note.textContent = "";
+
+      var subject = "Inquiry from " + first + " " + last + (type ? " — " + type : "");
+      var body =
+        "Name: " + first + " " + last + "\n" +
+        "Email: " + email + "\n" +
+        (phone ? "Phone: " + phone + "\n" : "") +
+        (type ? "Project type: " + type + "\n" : "") +
+        "\n" + msg + "\n";
+
+      window.location.href =
+        "mailto:info@elephanthawk.com?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+    });
+  }
 })();

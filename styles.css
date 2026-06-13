@@ -295,6 +295,31 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .gate span { font-size: 0.85rem; color: var(--ash); }
 @media (max-width: 680px) { .gates { grid-template-columns: 1fr 1fr; } }
 
+/* Contact form -------------------------------------------------------- */
+.form { max-width: 660px; margin-top: 8px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field.full { grid-column: 1 / -1; }
+.field label { font-size: 0.8rem; letter-spacing: 0.03em; color: var(--ash); font-weight: 600; }
+.field input, .field select, .field textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--wing-cream);
+  color: var(--chrysalis);
+  width: 100%;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: 2px solid var(--mulberry);
+  outline-offset: 1px;
+  border-color: var(--mulberry);
+}
+.field textarea { resize: vertical; min-height: 130px; }
+.form-note { display: inline-block; margin-left: 14px; font-size: 0.9rem; color: var(--ash); }
+@media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+
 /* Two-column prose (About) ------------------------------------------- */
 .split {
   display: grid;

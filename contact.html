@@ -76,6 +76,40 @@
       </div>
     </section>
 
+    <!-- ============ Contact form ============ -->
+    <section class="section">
+      <div class="container">
+        <p class="section-eyebrow">Send us a note</p>
+        <h2 class="section-title">Tell us what you're working on.</h2>
+        <form class="form" id="contactForm" novalidate>
+          <div class="form-grid">
+            <div class="field"><label for="cf-first">First name</label><input id="cf-first" type="text" autocomplete="given-name" required></div>
+            <div class="field"><label for="cf-last">Last name</label><input id="cf-last" type="text" autocomplete="family-name" required></div>
+            <div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="cf-phone">Phone <span style="font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label><input id="cf-phone" type="tel" autocomplete="tel"></div>
+            <div class="field full">
+              <label for="cf-type">Project type</label>
+              <select id="cf-type">
+                <option value="">Select one…</option>
+                <option>Industry program (medtech / pharma)</option>
+                <option>Partnership / joint venture</option>
+                <option>Innovator / clinician idea</option>
+                <option>Startup</option>
+                <option>Investor inquiry</option>
+                <option>Other / not sure</option>
+              </select>
+            </div>
+            <div class="field full"><label for="cf-msg">Question or comment</label><textarea id="cf-msg" required placeholder="Tell us a little about what you're building, or what you'd like to understand."></textarea></div>
+          </div>
+          <div style="margin-top:22px;">
+            <button type="button" class="btn btn-primary" id="cf-send">Compose email →</button>
+            <span id="cf-note" class="form-note"></span>
+          </div>
+          <p class="form-note" style="display:block;margin:18px 0 0;">This opens a pre-filled message in your own email app, addressed to us. We don't store form data on this site.</p>
+        </form>
+      </div>
+    </section>
+
     <!-- ============ 30-minute review ============ -->
     <section class="band on-dark">
       <div class="container">
@@ -98,7 +132,7 @@
           <div class="founder-bio">
             <h2 class="section-title" style="margin-bottom:6px;">Dr. Rupesh Ghyar</h2>
             <p class="founder-role">Founder &amp; CEO, Elephant Hawk</p>
-            <p>Rupesh founded and ran the Medtech Lab (BETIC) at IIT Bombay — one of India's foremost medical-device innovation centres — and purpose-built Elephant Hawk's engineering engine to bring regulated medtech products to market faster, for industry and innovators. He works between the US and India, and still answers his own email and WhatsApp.</p>
+            <p>Rupesh directed the Medtech Lab (BETIC) at IIT Bombay — one of India's foremost medical-device innovation centres — and purpose-built Elephant Hawk's engineering engine to bring regulated medtech products to market faster, for industry and innovators. He works between the US and India, and still answers his own email and WhatsApp.</p>
             <p>The Office of the Founder coordinates introductions and scheduling year-round — <a href="mailto:office@elephanthawk.com">office@elephanthawk.com</a>.</p>
             <p class="founder-contact-label">Reach Rupesh directly</p>
             <div class="founder-actions">
