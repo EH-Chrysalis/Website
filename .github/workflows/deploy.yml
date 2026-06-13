@@ -1,7 +1,7 @@
 name: Deploy to Network Solutions
 
 # Runs on every push to main, and can also be triggered by hand from the
-# Actions tab. It uploads the website files to the htdocs folder over FTP.
+# Actions tab. Uploads the website files to htdocs over plain FTP using lftp.
 on:
   push:
     branches: [ main ]
@@ -14,22 +14,28 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
-      - name: Upload changed files via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          # Credentials come from the repo's encrypted Secrets — never in code.
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          # Network Solutions resets plain-FTP data sockets; use encrypted FTPS.
-          protocol: ftps
-          # The website's public root on Network Solutions.
-          server-dir: /htdocs/
-          # Don't ship repo plumbing or deploy tooling to the web server.
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/README.md
-            **/deploy.sh
-            **/.deploy-secrets*
-            **/.DS_Store
+      - name: Install lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y lftp
+
+      - name: Upload site to htdocs over FTP
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          lftp -c "
+            set ftp:ssl-allow no;
+            set ftp:passive-mode on;
+            set ftp:prefer-epsv no;
+            set net:timeout 15;
+            set net:max-retries 3;
+            set net:reconnect-interval-base 5;
+            open -u \"$FTP_USERNAME\",\"$FTP_PASSWORD\" \"$FTP_SERVER\";
+            mirror --reverse --verbose --delete=false \
+              --exclude-glob .git* \
+              --exclude .github/ \
+              --exclude-glob .deploy-secrets* \
+              --exclude-glob deploy.sh \
+              --exclude-glob README.md \
+              ./ /htdocs/;
+          "
