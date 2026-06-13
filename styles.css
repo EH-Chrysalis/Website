@@ -48,6 +48,7 @@ body {
   line-height: 1.7;
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;            /* belt-and-suspenders against horizontal scroll */
 }
 img, svg { max-width: 100%; }
 a { color: var(--mulberry); text-decoration: none; }
@@ -194,6 +195,9 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   gap: clamp(24px, 5vw, 64px);
   padding-block: clamp(64px, 10vw, 128px);
 }
+/* Let grid children shrink below their content's intrinsic width so the
+   moth SVG can't blow the hero wider than the viewport (mobile overflow). */
+.hero .container > * { min-width: 0; }
 .hero h1 {
   font-size: clamp(2.6rem, 6vw, 4.6rem);
   line-height: 1.04;
