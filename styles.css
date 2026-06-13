@@ -581,6 +581,54 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .ways-caption em { color: var(--mulberry); font-style: italic; }
 
 /* =====================================================================
+   SEMI layers — element-tile cards + composition equation (Approach)
+   Each layer carries its own palette accent (set inline via --accent),
+   so the four read as distinct, combinable building blocks.
+   ===================================================================== */
+.semi .card.layer { border-top: 3px solid var(--accent); }
+.semi .layer-mark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 2.7rem;
+  line-height: 1;
+  color: var(--accent);
+  transition: transform 0.2s ease;
+}
+.semi .card.layer:hover .layer-mark { transform: translateY(-2px) scale(1.07); }
+
+/* S + E + M + I → any regulated device */
+.semi-compose {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 46px;
+}
+.semi-chip {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  border-radius: 12px;
+}
+.semi-plus { color: var(--ash); font-size: 1.25rem; }
+.semi-eq { color: var(--ash); font-size: 1.7rem; margin: 0 6px; }
+.semi-result {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  color: var(--mulberry);
+}
+
+/* =====================================================================
    Filter chips (Selected work)
    ===================================================================== */
 .filterbar { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
