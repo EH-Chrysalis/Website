@@ -21,7 +21,7 @@ jobs:
           mkdir -p dist
           cp index.html about.html approach.html contact.html privacy.html styles.css script.js dist/
           cp favicon.svg favicon-32.png apple-touch-icon.png og-image.png rupesh.jpg dist/
-          cp robots.txt sitemap.xml googlee8dccbec53f0735e.html dist/
+          cp robots.txt sitemap.xml google72b72ad5cc684097.html dist/
           ls -la dist
 
       - name: Upload dist/ to htdocs over SFTP
