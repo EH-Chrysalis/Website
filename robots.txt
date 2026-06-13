@@ -1,0 +1,7 @@
+# Elephant Hawk — crawler guidance
+# Allow all search engines to crawl everything (the privacy page opts out via its own noindex tag)
+User-agent: *
+Allow: /
+
+# Point crawlers to the sitemap so every page gets discovered
+Sitemap: https://www.elephanthawk.com/sitemap.xml
