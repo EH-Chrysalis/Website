@@ -267,6 +267,26 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 }
 .card h3 { font-size: 1.45rem; margin: 14px 0 10px; color: var(--dusk); }
 .card p { margin: 0; color: var(--chrysalis); font-size: 1rem; }
+/* Chrysalis process step label (e.g. "CONCEPT") */
+.step-stage {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--hawk-pink);
+  font-weight: 700;
+  margin: 12px 0 2px;
+}
+/* Five Gates row */
+.gates {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+.gate { text-align: center; border-top: 2px solid var(--hawk-pink); padding-top: 16px; }
+.gate b { display: block; font-family: var(--font-display); font-size: 1.25rem; color: var(--dusk); }
+.gate span { font-size: 0.85rem; color: var(--ash); }
+@media (max-width: 680px) { .gates { grid-template-columns: 1fr 1fr; } }
 
 /* Two-column prose (About) ------------------------------------------- */
 .split {
