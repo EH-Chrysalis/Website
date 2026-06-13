@@ -150,11 +150,12 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .btn:hover { text-decoration: none; }
 .btn-primary { background: var(--mulberry); color: var(--wing-cream); }
 .btn-primary:hover { background: #74182f; }
-.btn-ghost { background: transparent; color: currentColor; border-color: currentColor; }
-.btn-ghost:hover { background: currentColor; }
-.btn-ghost:hover { color: var(--wing-cream); }
-/* On the dark hero, the ghost button inverts cleanly */
-.on-dark .btn-ghost { color: var(--wing-cream); }
+/* Ghost button: dark outline on light surfaces; fills dark on hover so the
+   label stays visible (the old currentColor fill turned cream-on-cream). */
+.btn-ghost { background: transparent; color: var(--chrysalis); border-color: var(--chrysalis); }
+.btn-ghost:hover { background: var(--chrysalis); color: var(--wing-cream); }
+/* On dark surfaces (hero, mulberry band), the ghost inverts to cream */
+.on-dark .btn-ghost { color: var(--wing-cream); border-color: var(--wing-cream); }
 .on-dark .btn-ghost:hover { background: var(--wing-cream); color: var(--dusk); }
 
 /* =====================================================================
@@ -302,7 +303,29 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   margin: 0 0 18px;
 }
 .founder-bio p { color: var(--chrysalis); max-width: 54ch; }
-.founder-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px; }
+.founder-contact-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ash);
+  font-weight: 600;
+  margin: 26px 0 0;
+}
+.founder-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+/* Circular icon buttons — the link lives behind the logo (title + aria-label) */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--mulberry);
+  color: var(--wing-cream);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.icon-btn:hover { background: #74182f; transform: translateY(-2px); text-decoration: none; }
+.icon-btn svg { width: 22px; height: 22px; display: block; }
 @media (max-width: 680px) {
   .founder { grid-template-columns: 1fr; }
   .founder-photo img { width: 200px; }
