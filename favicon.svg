@@ -1,10 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Elephant Hawk ring emblem as a favicon tile -->
+  <!-- Elephant Hawk — moth in a circle (the chrysalis), as a favicon tile -->
   <rect width="64" height="64" rx="13" fill="#F2E7D2"/>
-  <circle cx="32" cy="32" r="22" fill="none" stroke="#8B2342" stroke-width="2.8"/>
-  <path d="M32,31 C24,23 16,25 18,32 C19.5,37 27,36 32,32 Z" fill="#ED2D6A"/>
-  <path d="M32,31 C40,23 48,25 46,32 C44.5,37 37,36 32,32 Z" fill="#ED2D6A"/>
-  <path d="M32,34 C26,39 21,42 24,47 C26.5,51 31,44 32,38 Z" fill="#828B3D"/>
-  <path d="M32,34 C38,39 43,42 40,47 C37.5,51 33,44 32,38 Z" fill="#828B3D"/>
-  <ellipse cx="32" cy="34" rx="1.9" ry="9" fill="#8B2342"/>
+  <circle cx="32" cy="32" r="23" fill="none" stroke="#8B2342" stroke-width="2.6"/>
+  <g transform="translate(32,33) scale(0.6) translate(-32,-42)">
+    <path d="M32,40 C20,22 8,24 10,38 C12,48 24,46 32,40 Z" fill="#ED2D6A"/>
+    <path d="M32,40 C44,22 56,24 54,38 C52,48 40,46 32,40 Z" fill="#ED2D6A"/>
+    <path d="M32,42 C25,52 19,57 23,61 C27,64 31,55 32,46 Z" fill="#828B3D"/>
+    <path d="M32,42 C39,52 45,57 41,61 C37,64 33,55 32,46 Z" fill="#828B3D"/>
+    <ellipse cx="32" cy="42" rx="2.6" ry="11" fill="#8B2342"/>
+    <path d="M30,32 q-5,-7 -10,-9 M34,32 q5,-7 10,-9" stroke="#8B2342" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+  </g>
 </svg>
