@@ -326,6 +326,11 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 }
 .icon-btn:hover { background: #74182f; transform: translateY(-2px); text-decoration: none; }
 .icon-btn svg { width: 22px; height: 22px; display: block; }
+/* Recognizable brand colors for the social icons (email stays mulberry) */
+.icon-btn--linkedin { background: #0A66C2; color: #fff; }
+.icon-btn--linkedin:hover { background: #004182; }
+.icon-btn--whatsapp { background: #25D366; color: #fff; }
+.icon-btn--whatsapp:hover { background: #1DA851; }
 @media (max-width: 680px) {
   .founder { grid-template-columns: 1fr; }
   .founder-photo img { width: 200px; }
