@@ -34,4 +34,28 @@
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+
+  /* --- 3. Scroll reveal -----------------------------------------------
+     Fade each section's content up as it scrolls into view. We add the
+     `.reveal` class from JS so that if JS never runs (or is stripped),
+     the content simply shows — no blank page. Respects reduced-motion. */
+  var prefersReduced = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!prefersReduced && "IntersectionObserver" in window) {
+    // Every section's inner container, except the hero (it's the first paint).
+    var blocks = document.querySelectorAll("main section:not(.hero) .container");
+    blocks.forEach(function (el) { el.classList.add("reveal"); });
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+
+    blocks.forEach(function (el) { io.observe(el); });
+  }
 })();

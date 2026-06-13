@@ -146,9 +146,9 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   border-radius: 999px;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
 }
-.btn:hover { text-decoration: none; }
+.btn:hover { text-decoration: none; transform: translateY(-2px); }
 .btn-primary { background: var(--mulberry); color: var(--wing-cream); }
 .btn-primary:hover { background: #74182f; }
 /* Ghost button: dark outline on light surfaces; fills dark on hover so the
@@ -441,7 +441,23 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   .split { grid-template-columns: 1fr; }
 }
 
+/* =====================================================================
+   Energy: scroll reveals + a living hero
+   ===================================================================== */
+/* .reveal is added by JS, so content stays visible if JS doesn't run. */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* The dark hero gradient slowly breathes so it doesn't feel static. */
+.hero { background-size: 180% 180%; animation: heroShift 22s ease-in-out infinite; }
+@keyframes heroShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
+  .hero { animation: none; }
+  .reveal { opacity: 1; transform: none; }
 }
