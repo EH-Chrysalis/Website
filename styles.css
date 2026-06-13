@@ -557,6 +557,30 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .metamorph-divider svg { width: clamp(210px, 42%, 300px); height: auto; }
 
 /* =====================================================================
+   "Four ways in" — iconed engagement cards + convergence cue (Approach)
+   ===================================================================== */
+/* Top row of each card: icon on the left, step number quietly on the right. */
+.way-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.ways .card-num { color: var(--ash); font-size: 1.05rem; }   /* number recedes; icon leads */
+.way-icon { color: var(--hawk-pink); display: inline-flex; transition: transform 0.2s ease; }
+.way-icon svg { width: 32px; height: 32px; display: block; }
+/* The whole card already lifts on hover; the icon springs a touch with it. */
+.ways .card:hover .way-icon { transform: scale(1.14) rotate(-4deg); }
+
+/* The four paths funnel into one point, leading the eye into Chrysalis. */
+.ways-converge { display: flex; justify-content: center; margin-top: 44px; }
+.ways-converge svg { width: clamp(190px, 38%, 250px); height: auto; }
+.ways-caption {
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 3vw, 1.85rem);
+  color: var(--dusk);
+  margin: 8px 0 0;
+}
+.ways-caption em { color: var(--mulberry); font-style: italic; }
+
+/* =====================================================================
    Filter chips (Selected work)
    ===================================================================== */
 .filterbar { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
