@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elephant Hawk — Where innovators meet operational conviction</title>
+  <meta name="description" content="Elephant Hawk partners with industry and innovators to develop, manufacture, and bring regulated products to market worldwide.">
+  <!-- Brand web fonts: Cormorant Garamond (display) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============ Shared header (repeat on every page) ============ -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="Elephant Hawk home">
+        <!-- Ring emblem — wing pair inside a ring (Mulberry ring on cream) -->
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="32" cy="32" r="28.5" fill="none" stroke="#8B2342" stroke-width="2.4"/>
+          <path d="M32,31 C22,21 12,24 14,32 C16,38 25,37 32,32 Z" fill="#ED2D6A"/>
+          <path d="M32,31 C42,21 52,24 50,32 C48,38 39,37 32,32 Z" fill="#ED2D6A"/>
+          <path d="M32,34 C25,40 19,44 23,50 C26,54 31,46 32,39 Z" fill="#828B3D"/>
+          <path d="M32,34 C39,40 45,44 41,50 C38,54 33,46 32,39 Z" fill="#828B3D"/>
+          <ellipse cx="32" cy="34" rx="2" ry="11" fill="#8B2342"/>
+        </svg>
+        <span class="name">Elephant Hawk<span class="tag">Long-term partner</span></span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-controls="nav-links" aria-expanded="false">☰</button>
+      <ul class="nav-links" id="nav-links" hidden>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="approach.html">Approach</a></li>
+        <li><a class="nav-cta" href="mailto:info@elephanthawk.com">Inquiries</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ Hero (dark transformation gradient + moth) ============ -->
+    <section class="hero on-dark">
+      <div class="container">
+        <div class="hero-copy">
+          <h1>Where innovators meet <em>operational conviction</em></h1>
+          <p>We partner with industry and innovators to develop, manufacture, and bring regulated products to market worldwide.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:info@elephanthawk.com">Start a Conversation</a>
+            <a class="btn btn-ghost" href="approach.html">See our approach</a>
+          </div>
+        </div>
+        <figure class="hero-art" style="margin:0;">
+          <!-- The elephant hawk moth — the figure the brand is named for -->
+          <svg viewBox="0 0 1200 1140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of an elephant hawk moth">
+            <defs>
+              <linearGradient id="topWing" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ED2D6A"/><stop offset="65%" stop-color="#8B2342"/><stop offset="100%" stop-color="#3D332A"/>
+              </linearGradient>
+              <linearGradient id="bottomWing" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#828B3D"/><stop offset="100%" stop-color="#3D332A"/>
+              </linearGradient>
+              <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ED2D6A"/><stop offset="100%" stop-color="#8B2342"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="380" cy="660" rx="280" ry="170" fill="url(#bottomWing)" opacity="0.92"/>
+            <ellipse cx="820" cy="660" rx="280" ry="170" fill="url(#bottomWing)" opacity="0.92"/>
+            <path d="M600,420 C400,250 200,260 170,420 C150,540 280,640 450,580 C530,560 600,510 600,470 Z" fill="url(#topWing)"/>
+            <path d="M600,420 C800,250 1000,260 1030,420 C1050,540 920,640 750,580 C670,560 600,510 600,470 Z" fill="url(#topWing)"/>
+            <path d="M210,400 Q400,420 590,480" stroke="#F2E7D2" stroke-width="4" fill="none" opacity="0.45"/>
+            <path d="M990,400 Q800,420 610,480" stroke="#F2E7D2" stroke-width="4" fill="none" opacity="0.45"/>
+            <path d="M250,540 Q420,560 590,580" stroke="#828B3D" stroke-width="3" fill="none" opacity="0.6"/>
+            <path d="M950,540 Q780,560 610,580" stroke="#828B3D" stroke-width="3" fill="none" opacity="0.6"/>
+            <ellipse cx="600" cy="600" rx="48" ry="260" fill="url(#bodyGrad)"/>
+            <ellipse cx="600" cy="660" rx="34" ry="6" fill="#F2E7D2" opacity="0.35"/>
+            <ellipse cx="600" cy="730" rx="30" ry="6" fill="#F2E7D2" opacity="0.35"/>
+            <ellipse cx="600" cy="790" rx="26" ry="5" fill="#F2E7D2" opacity="0.35"/>
+            <ellipse cx="600" cy="445" rx="42" ry="65" fill="#F2E7D2"/>
+            <circle cx="600" cy="350" r="32" fill="#F2E7D2"/>
+            <path d="M586,344 Q558,280 524,250" stroke="#F2E7D2" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <path d="M614,344 Q642,280 676,250" stroke="#F2E7D2" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <ellipse cx="600" cy="440" rx="14" ry="50" fill="#8B2342" opacity="0.4"/>
+          </svg>
+          <figcaption class="hero-caption">Deilephila elpenor — the elephant hawk moth</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ Stats strip ============ -->
+    <section class="container">
+      <div class="stats">
+        <div class="stat"><div class="num">40+</div><div class="label">Products Developed</div></div>
+        <div class="stat"><div class="num">100+</div><div class="label">Partners</div></div>
+        <div class="stat"><div class="num">6</div><div class="label">Therapeutic Areas</div></div>
+      </div>
+    </section>
+
+    <!-- ============ What we do (teaser) ============ -->
+    <section class="section section--panel">
+      <div class="container">
+        <p class="section-eyebrow">What we do</p>
+        <h2 class="section-title">The path from breakthrough idea to product is too slow, fragmented, and expensive.</h2>
+        <p class="lede">Elephant Hawk builds the operational infrastructure that compresses that path — so the people who need these products get them sooner.</p>
+        <div class="hero-actions" style="margin-top:32px;">
+          <a class="btn btn-primary" href="about.html">More about us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Canonical phrase band ============ -->
+    <section class="band">
+      <div class="container">
+        <p>Ideas crawl in. Products fly out.</p>
+        <p class="small">For as long as the work requires.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ Shared footer (repeat on every page) ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="32" cy="32" r="28.5" fill="none" stroke="#F2E7D2" stroke-width="2.4"/>
+              <path d="M32,31 C22,21 12,24 14,32 C16,38 25,37 32,32 Z" fill="#ED2D6A"/>
+              <path d="M32,31 C42,21 52,24 50,32 C48,38 39,37 32,32 Z" fill="#ED2D6A"/>
+              <path d="M32,34 C25,40 19,44 23,50 C26,54 31,46 32,39 Z" fill="#828B3D"/>
+              <path d="M32,34 C39,40 45,44 41,50 C38,54 33,46 32,39 Z" fill="#828B3D"/>
+              <ellipse cx="32" cy="34" rx="2" ry="11" fill="#F2E7D2"/>
+            </svg>
+            <span>Elephant Hawk</span>
+          </div>
+          <div>Cheyenne, WY · <a href="mailto:info@elephanthawk.com">info@elephanthawk.com</a></div>
+        </div>
+        <ul class="footer-legal">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Your Privacy Rights</a></li>
+          <li><a href="#">Do Not Sell or Share My Personal Information</a></li>
+        </ul>
+      </div>
+      <div>© <span id="year">2026</span> Elephant Hawk LLC. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
