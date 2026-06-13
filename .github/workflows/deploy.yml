@@ -21,6 +21,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          # Network Solutions resets plain-FTP data sockets; use encrypted FTPS.
+          protocol: ftps
           # The website's public root on Network Solutions.
           server-dir: /htdocs/
           # Don't ship repo plumbing or deploy tooling to the web server.
