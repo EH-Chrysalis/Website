@@ -1,43 +1,34 @@
 name: Deploy to Network Solutions
 
 # Runs on every push to main, and can also be triggered by hand from the
-# Actions tab. Uploads ONLY the website files to htdocs over FTP.
+# Actions tab. Uploads ONLY the website files to htdocs over encrypted SFTP.
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
 
 jobs:
-  ftp-deploy:
+  sftp-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
 
-      # Copy only the real website files into a clean folder. Nothing else
-      # (no .git, no .github, no deploy tooling) can possibly be uploaded.
+      # Copy only the real website files into a clean folder, so repo
+      # internals (.git, .github, deploy tooling) can never be uploaded.
       - name: Stage website files
         run: |
           mkdir -p dist
           cp index.html about.html approach.html styles.css script.js dist/
           ls -la dist
 
-      - name: Install lftp
-        run: sudo apt-get update -qq && sudo apt-get install -y lftp
-
-      - name: Upload dist/ to htdocs over FTP
-        env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          lftp -c "
-            set ftp:ssl-allow no;
-            set ftp:passive-mode on;
-            set ftp:prefer-epsv no;
-            set net:timeout 15;
-            set net:max-retries 3;
-            set net:reconnect-interval-base 5;
-            open -u \"$FTP_USERNAME\",\"$FTP_PASSWORD\" \"$FTP_SERVER\";
-            mirror --reverse --verbose dist/ /htdocs/;
-          "
+      - name: Upload dist/ to htdocs over SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.5
+        with:
+          server:   ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 22
+          local_path: './dist/*'
+          remote_path: '/htdocs'
+          sftp_only: true
