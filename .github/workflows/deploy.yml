@@ -19,8 +19,8 @@ jobs:
       - name: Stage website files
         run: |
           mkdir -p dist
-          cp index.html about.html approach.html styles.css script.js dist/
-          cp favicon.svg favicon-32.png apple-touch-icon.png dist/
+          cp index.html about.html approach.html privacy.html styles.css script.js dist/
+          cp favicon.svg favicon-32.png apple-touch-icon.png og-image.png dist/
           ls -la dist
 
       - name: Upload dist/ to htdocs over SFTP
