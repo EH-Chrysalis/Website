@@ -196,4 +196,13 @@
       if (noHover) card.addEventListener("click", toggle);
     });
   }
+
+  /* --- 9. Pre-select "Context Brief request" when arriving via a brief CTA
+     (links carry ?type=brief). */
+  var cfType = document.getElementById("cf-type");
+  if (cfType && window.location.search.indexOf("type=brief") !== -1) {
+    for (var ti = 0; ti < cfType.options.length; ti++) {
+      if (cfType.options[ti].text === "Context Brief request") { cfType.selectedIndex = ti; break; }
+    }
+  }
 })();
