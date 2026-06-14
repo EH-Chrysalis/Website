@@ -1020,6 +1020,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   color: var(--wing-cream);
 }
 .deliver-result strong { color: var(--hawk-pink); }
+.deliver-note { margin: 2px 0 0; text-align: center; font-size: 0.95rem; line-height: 1.5; color: rgba(242, 231, 210, 0.78); }
 .deliver-link { display: inline-block; margin-top: 16px; font-weight: 700; font-size: 0.9rem; color: var(--accent); text-decoration: none; }
 .deliver-link:hover { text-decoration: underline; }
 @media (max-width: 760px) {
