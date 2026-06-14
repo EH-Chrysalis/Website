@@ -330,7 +330,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   box-shadow: 0 20px 44px rgba(61, 51, 42, 0.12);
   text-decoration: none;
 }
-#note, #office-hours { scroll-margin-top: 96px; }   /* clear the sticky header when anchored */
+#note, #office-hours, #context-brief { scroll-margin-top: 96px; }   /* clear the sticky header when anchored */
 .path-icon {
   display: inline-flex;
   align-items: center;
