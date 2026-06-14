@@ -298,6 +298,9 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   color: var(--chrysalis);
 }
 
+/* A left-aligned row of pill chips inside prose (e.g. "What we hold") */
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 16px 0 18px; }
+
 /* Mission & vision — bold statement + converging input chips */
 .mission-line {
   font-family: var(--font-display);
