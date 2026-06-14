@@ -806,6 +806,17 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 /* The four paths funnel into one point, leading the eye into Chrysalis. */
 .ways-converge { display: flex; justify-content: center; margin-top: 44px; }
 .ways-converge svg { width: clamp(190px, 38%, 250px); height: auto; }
+/* On scroll-in, the four paths draw into the engine (staggered), then the
+   chevron; the center "engine" dot gently pulses. Reduced-motion: drawn + still. */
+.ways-converge path { stroke-dasharray: 100; }
+.reveal .ways-converge path { stroke-dashoffset: 100; transition: stroke-dashoffset 0.9s ease; }
+.reveal.in .ways-converge path { stroke-dashoffset: 0; }
+.reveal .ways-converge path:nth-child(2) { transition-delay: 0.08s; }
+.reveal .ways-converge path:nth-child(3) { transition-delay: 0.16s; }
+.reveal .ways-converge path:nth-child(4) { transition-delay: 0.24s; }
+.reveal .ways-converge path:last-child { transition-delay: 0.5s; }
+.wc-dot { transform-box: fill-box; transform-origin: center; animation: wcPulse 2.4s ease-in-out infinite; }
+@keyframes wcPulse { 0%, 100% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.5); opacity: 1; } }
 .ways-caption {
   text-align: center;
   font-family: var(--font-display);
@@ -1187,4 +1198,5 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   .hero-art svg { animation: none; }
   .reveal { opacity: 1; transform: none; }
   .metamorph-divider { opacity: 1; transform: none; }
+  .wc-dot { animation: none; }
 }
