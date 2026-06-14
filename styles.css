@@ -1073,8 +1073,8 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
    ===================================================================== */
 .engine-attrs {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 28px;
   margin-top: 44px;
 }
 .ea-icon {
