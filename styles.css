@@ -132,7 +132,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   letter-spacing: 0.01em;
 }
 .nav-links a:hover { color: var(--mulberry); text-decoration: none; }
-.nav-links a.active { color: var(--mulberry); }
+.nav-links a.active { color: var(--mulberry); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .nav-cta {
   border: 1px solid var(--mulberry);
   color: var(--mulberry) !important;
@@ -213,8 +213,8 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .hero .container > * { min-width: 0; }
 .hero h1 {
   font-size: clamp(2.6rem, 6vw, 4.6rem);
-  line-height: 1.04;
-  margin: 0 0 24px;
+  line-height: 1.08;
+  margin: 0 0 30px;
   color: var(--wing-cream);
 }
 .hero h1 em { font-style: italic; color: var(--hawk-pink); }
@@ -245,7 +245,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  margin-top: 56px;
+  margin-top: clamp(40px, 6vw, 56px);
 }
 .stat {
   border: 1px solid var(--line);
@@ -266,7 +266,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .stat .label { margin-top: 10px; color: var(--ash); font-size: 0.98rem; letter-spacing: 0.02em; }
 
 /* Audience selector — spell out who the site is for, just under the hero */
-.audience-bar { padding-top: 44px; text-align: center; }
+.audience-bar { padding-top: clamp(40px, 6vw, 56px); text-align: center; }
 .audience-lead { color: var(--chrysalis); font-weight: 500; margin: 0 0 16px; }
 .audience-lead strong { color: var(--dusk); }
 .audience-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
@@ -491,8 +491,12 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   font-size: 1.4rem;
   line-height: 1;
 }
-.card h3 { font-size: 1.45rem; margin: 14px 0 10px; color: var(--dusk); }
+.card h3 { font-size: 1.45rem; line-height: 1.25; margin: 14px 0 10px; color: var(--dusk); }
 .card p { margin: 0; color: var(--chrysalis); font-size: 1rem; }
+/* Reserve two title lines in grid cards so a heading that wraps can never ride
+   into the body during the web-font swap (FOUT), and all cards align. */
+.cards .card h3 { min-height: 2.5em; }
+.partner--wide .partner-body h3, .card--featured .feat-main h3 { min-height: 0; }
 /* Case-study outcome line */
 .case-outcome { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); font-family: var(--font-display); font-size: 1.08rem; line-height: 1.35; color: var(--mulberry); }
 /* Chrysalis process step label (e.g. "CONCEPT") */
