@@ -593,7 +593,9 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   border-left: 4px solid var(--mulberry);
 }
 .founder-offer-kicker { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--mulberry); margin: 0 0 8px; }
-.founder-offer-lead { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; color: var(--dusk); margin: 0 0 6px; }
+.founder-offer-lead { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; color: var(--dusk); margin: 0 0 10px; }
+.founder-offer-when { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--mulberry); font-size: 0.95rem; margin: 0 0 14px; }
+.founder-offer-when svg { width: 18px; height: 18px; flex: none; }
 .founder-offer p { margin: 0 0 16px; }
 .founder-offer .btn { margin: 0; }
 
