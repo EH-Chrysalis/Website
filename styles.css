@@ -983,6 +983,32 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 }
 
 /* =====================================================================
+   Chrysalis engine — "how it runs" attribute badges (Approach, on dark)
+   ===================================================================== */
+.engine-attrs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 44px;
+}
+.ea-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 13px;
+  background: rgba(237, 45, 106, 0.16);
+  color: var(--hawk-pink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+.ea-icon svg { width: 26px; height: 26px; }
+.engine-attr h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; color: var(--wing-cream); margin: 0 0 5px; }
+.engine-attr p { margin: 0; font-size: 0.9rem; line-height: 1.5; color: rgba(242, 231, 210, 0.78); }
+@media (max-width: 760px) { .engine-attrs { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 460px) { .engine-attrs { grid-template-columns: 1fr; } }
+
+/* =====================================================================
    Scope of work — the full discipline stack, run through Chrysalis (Approach)
    8 workstreams in a 4×2 grid on dark; echoed as a compact strip on Home.
    ===================================================================== */
