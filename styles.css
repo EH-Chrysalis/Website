@@ -343,6 +343,20 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .partner-icon svg { width: 28px; height: 28px; }
 .card.partner:hover .partner-icon { transform: scale(1.08) rotate(-3deg); }
 .card.partner .step-stage { margin-top: 0; }
+/* Sponsors: a full-width horizontal banner under the 2×2 (distinct relationship). */
+.partner--wide {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 3vw, 32px);
+  flex-wrap: wrap;
+}
+.partner--wide .partner-icon { margin-bottom: 0; }
+.partner--wide .partner-body { flex: 1 1 320px; }
+.partner--wide .partner-body h3 { margin: 4px 0 6px; }
+.partner--wide .partner-body p { margin: 0; }
+.partner--wide .btn { flex: none; }
+
 /* Small teaser link inside a card (e.g. office-hours on the Innovators card) */
 .card-teaser {
   display: inline-flex;
