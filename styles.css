@@ -264,6 +264,25 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 }
 .stat .label { margin-top: 10px; color: var(--ash); font-size: 0.98rem; letter-spacing: 0.02em; }
 
+/* Audience selector — spell out who the site is for, just under the hero */
+.audience-bar { padding-top: 44px; text-align: center; }
+.audience-lead { color: var(--chrysalis); font-weight: 500; margin: 0 0 16px; }
+.audience-lead strong { color: var(--dusk); }
+.audience-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.audience-chips a {
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  padding: 9px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--mulberry);
+  color: var(--mulberry);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.audience-chips a:hover { background: var(--mulberry); color: var(--wing-cream); text-decoration: none; }
+#for-industry, #for-innovators, #for-startups, #for-sponsors { scroll-margin-top: 100px; }
+
 /* Standards / regulatory-pathway strip — table-stakes credibility */
 .standards { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 14px; padding: 28px 0 2px; }
 .standards-lead { font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--ash); }
