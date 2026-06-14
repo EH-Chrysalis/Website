@@ -584,6 +584,18 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 }
 .creds li strong { color: var(--mulberry); }
 .founder-bio p { color: var(--chrysalis); max-width: 54ch; }
+/* Founder-level 30-minute review offer (folded into the founder block) */
+.founder-offer {
+  margin: 22px 0;
+  padding: 22px 24px;
+  border-radius: 14px;
+  background: var(--cream-panel);
+  border-left: 4px solid var(--mulberry);
+}
+.founder-offer-lead { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; color: var(--dusk); margin: 0 0 6px; }
+.founder-offer p { margin: 0 0 16px; }
+.founder-offer .btn { margin: 0; }
+
 .founder-contact-label {
   font-size: 0.78rem;
   letter-spacing: 0.16em;
