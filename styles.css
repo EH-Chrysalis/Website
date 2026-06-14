@@ -227,7 +227,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
 .hero-art { display: block; }
 .hero-art svg { width: 100%; height: auto; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.35)); }
-.hero-art .hero-logo { display: block; width: 100%; max-width: 440px; height: auto; margin-inline: auto; border-radius: 50%; filter: drop-shadow(0 22px 55px rgba(0,0,0,0.4)); }
+.hero-art .hero-logo { display: block; width: 80%; max-width: 340px; height: auto; margin-inline: auto; border-radius: 50%; filter: drop-shadow(0 22px 55px rgba(0,0,0,0.4)); }
 
 /* A small caption under the moth */
 .hero-caption {
