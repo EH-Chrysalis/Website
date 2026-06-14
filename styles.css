@@ -875,7 +875,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .scope-lead { margin: 28px 0 14px; color: var(--chrysalis); font-weight: 500; }
 .scope-strip { display: flex; flex-wrap: wrap; gap: 10px; }
 .scope-strip b { color: var(--mulberry); margin-right: 5px; }
-.scope-strip span {
+.scope-strip a {
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -884,7 +884,10 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   border: 1px solid var(--line);
   background: var(--wing-cream);
   color: var(--chrysalis);
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
 }
+.scope-strip a:hover { border-color: var(--mulberry); color: var(--mulberry); text-decoration: none; }
 
 /* =====================================================================
    The six stages — one continuous timeline (Approach)
