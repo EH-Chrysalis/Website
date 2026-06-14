@@ -935,14 +935,17 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   gap: 20px;
   align-items: stretch;
 }
+/* Cream cards on the dark canvas; each pillar carries its own accent
+   (US = mulberry, Globally powered = moth-olive). */
 .deliver-pillar {
-  border: 1px solid rgba(242, 231, 210, 0.18);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--accent);
   border-radius: 16px;
   padding: 28px 26px;
-  background: rgba(242, 231, 210, 0.04);
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  background: var(--wing-cream);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.deliver-pillar:hover { border-color: var(--hawk-pink); transform: translateY(-3px); }
+.deliver-pillar:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28); }
 .deliver-icon {
   width: 54px;
   height: 54px;
@@ -950,23 +953,22 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(237, 45, 106, 0.16);
-  color: var(--hawk-pink);
+  background: var(--accent);
+  color: var(--wing-cream);
   margin-bottom: 14px;
 }
 .deliver-icon svg { width: 28px; height: 28px; }
-.deliver-kicker { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--hawk-pink); margin: 0 0 4px; }
-.deliver-pillar h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.45rem; color: var(--wing-cream); margin: 0; }
+.deliver-kicker { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--accent); margin: 0 0 4px; }
+.deliver-pillar h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.45rem; color: var(--dusk); margin: 0; }
 .deliver-list { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
-.deliver-list li { display: flex; align-items: flex-start; gap: 10px; color: rgba(242, 231, 210, 0.86); font-size: 0.95rem; line-height: 1.45; }
-.deliver-list li::before { content: "✓"; color: var(--hawk-pink); font-weight: 700; flex: none; }
+.deliver-list li { display: flex; align-items: flex-start; gap: 10px; color: var(--chrysalis); font-size: 0.95rem; line-height: 1.45; }
+.deliver-list li::before { content: "✓"; color: var(--accent); font-weight: 700; flex: none; }
 .deliver-plus { display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 2.2rem; color: var(--hawk-pink); }
 .deliver-result {
   text-align: center;
-  border: 1px solid rgba(242, 231, 210, 0.18);
   border-radius: 14px;
-  padding: 20px 26px;
-  background: rgba(237, 45, 106, 0.08);
+  padding: 22px 26px;
+  background: var(--mulberry);
   font-family: var(--font-display);
   font-size: clamp(1.1rem, 2.2vw, 1.5rem);
   line-height: 1.3;
