@@ -80,18 +80,20 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   align-items: center;
   justify-content: space-between;
   min-height: 110px;            /* taller bar to hold the larger logo */
+  transition: min-height 0.2s ease;
 }
 
 /* The wordmark lockup: chrysalis mark (left) + name (right) — ~1.5× size */
 .brand { display: flex; align-items: center; gap: 18px; color: var(--chrysalis); }
 .brand:hover { text-decoration: none; }
-.brand svg { width: 45px; height: 45px; display: block; flex: none; }
+.brand svg { width: 45px; height: 45px; display: block; flex: none; transition: width 0.2s ease, height 0.2s ease; }
 .brand .name {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 2.25rem;
   line-height: 1;
   letter-spacing: 0.01em;
+  transition: font-size 0.2s ease;
 }
 .brand .tag {
   display: block;
@@ -103,6 +105,16 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   margin-top: 7px;
   font-weight: 600;
   white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+/* Once scrolled, the sticky bar + logo shrink (desktop only — on mobile the
+   logo is already compact and shrinking would offset the dropdown menu). */
+@media (min-width: 761px) {
+  .site-header.scrolled .nav { min-height: 68px; }
+  .site-header.scrolled .brand svg { width: 32px; height: 32px; }
+  .site-header.scrolled .brand .name { font-size: 1.6rem; }
+  .site-header.scrolled .brand .tag { opacity: 0; pointer-events: none; }
 }
 
 .nav-links {

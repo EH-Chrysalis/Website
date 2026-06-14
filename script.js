@@ -169,6 +169,16 @@
     });
   }
 
+  /* --- 8b. Shrink the sticky header once the page is scrolled --------- */
+  var header = document.querySelector(".site-header");
+  if (header) {
+    var onScroll = function () {
+      header.classList.toggle("scrolled", window.scrollY > 24);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
   /* --- 8. Flip tiles (SEMI layers) ------------------------------------
      Hover and keyboard focus flip the tiles via CSS alone. This adds the
      two cases CSS can't cover: a tap on touch devices, and Enter/Space
