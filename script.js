@@ -206,6 +206,7 @@
     var q = window.location.search;
     var want = q.indexOf("type=brief") !== -1 ? "Context Brief request"
              : q.indexOf("type=officehours") !== -1 ? "Founder office hours (innovators)"
+             : q.indexOf("type=cosponsor") !== -1 ? "Co-sponsorship (startup / innovator)"
              : null;
     if (want) {
       for (var ti = 0; ti < cfType.options.length; ti++) {

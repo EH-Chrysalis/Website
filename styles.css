@@ -419,10 +419,11 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 
 /* Small teaser link inside a card (e.g. office-hours on the Innovators card) */
 .card-teaser {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
   gap: 7px;
-  margin-top: 16px;
+  margin-top: 14px;
   font-weight: 700;
   font-size: 0.9rem;
   color: var(--mulberry);
