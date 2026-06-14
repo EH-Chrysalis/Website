@@ -578,7 +578,6 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 }
 .field input::placeholder, .field textarea::placeholder { color: var(--ash); }
 .field textarea { resize: vertical; min-height: 140px; }
-.field input[type="file"] { padding: 11px 14px; font-size: 0.92rem; color: var(--ash); }
 .form-note { display: inline-block; margin-left: 14px; font-size: 0.9rem; color: var(--ash); }
 /* Inline confirmation shown after a successful submit (olive = success). */
 .form-success {
