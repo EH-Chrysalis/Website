@@ -86,7 +86,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 /* The wordmark lockup: chrysalis mark (left) + name (right) — ~1.5× size */
 .brand { display: flex; align-items: center; gap: 18px; color: var(--chrysalis); }
 .brand:hover { text-decoration: none; }
-.brand svg { width: 45px; height: 45px; display: block; flex: none; transition: width 0.2s ease, height 0.2s ease; }
+.brand-mark { width: 45px; height: 45px; display: block; flex: none; border-radius: 50%; transition: width 0.2s ease, height 0.2s ease; }
 .brand .name {
   font-family: var(--font-display);
   font-weight: 600;
@@ -112,7 +112,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
    logo is already compact and shrinking would offset the dropdown menu). */
 @media (min-width: 761px) {
   .site-header.scrolled .nav { min-height: 68px; }
-  .site-header.scrolled .brand svg { width: 32px; height: 32px; }
+  .site-header.scrolled .brand-mark { width: 32px; height: 32px; }
   .site-header.scrolled .brand .name { font-size: 1.6rem; }
   .site-header.scrolled .brand .tag { opacity: 0; pointer-events: none; }
 }
@@ -816,7 +816,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   border-bottom: 1px solid rgba(242, 231, 210, 0.14);
 }
 .footer-brand { display: flex; align-items: center; gap: 11px; font-family: var(--font-display); font-weight: 600; font-size: 1.4rem; color: var(--wing-cream); }
-.footer-brand svg { width: 30px; height: 30px; flex: none; }
+.footer-mark { width: 30px; height: 30px; flex: none; border-radius: 50%; }
 .footer-legal { display: flex; flex-wrap: wrap; gap: 8px 18px; list-style: none; margin: 0; padding: 0; }
 .footer-legal a { font-size: 0.85rem; color: var(--ash); }
 
@@ -831,7 +831,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   .nav-toggle { display: block; }
   /* Dampen the enlarged logo on phones so the sticky bar stays reasonable */
   .nav { min-height: 88px; }
-  .brand svg { width: 38px; height: 38px; }
+  .brand-mark { width: 38px; height: 38px; }
   .brand .name { font-size: 1.9rem; }
   .nav-links {
     position: absolute;
