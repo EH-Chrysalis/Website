@@ -544,7 +544,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .form {
   max-width: 720px;
   margin: 8px 0 0;
-  background: var(--cream-panel);
+  background: var(--wing-cream);
   border: 1px solid var(--line);
   border-top: 4px solid var(--mulberry);   /* signature accent bar */
   border-radius: 16px;
@@ -614,7 +614,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .form-success {
   max-width: 720px;
   margin: 8px 0 0;
-  background: var(--cream-panel);
+  background: var(--wing-cream);
   border: 1px solid var(--line);
   border-top: 4px solid var(--moth-olive);
   border-radius: 16px;
