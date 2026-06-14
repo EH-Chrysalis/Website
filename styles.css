@@ -298,6 +298,46 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   color: var(--chrysalis);
 }
 
+/* Mission & vision — bold statement + converging input chips */
+.mission-line {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 4.6vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--dusk);
+  margin: 8px 0 22px;
+  max-width: 18ch;
+}
+.mission-line em { font-style: italic; color: var(--mulberry); }
+.mission-sub {
+  font-size: clamp(1.05rem, 1.9vw, 1.3rem);
+  line-height: 1.45;
+  color: var(--chrysalis);
+  max-width: 56ch;
+  margin: 0 0 30px;
+}
+.mission-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; }
+.mission-flow .mi {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--cream-panel);
+  color: var(--chrysalis);
+}
+.mission-flow .mi-arrow { color: var(--hawk-pink); font-size: 1.4rem; font-weight: 700; line-height: 1; padding: 0 2px; }
+.mission-flow .mi-out {
+  background: var(--mulberry);
+  border-color: var(--mulberry);
+  color: var(--wing-cream);
+}
+@media (max-width: 560px) {
+  .mission-flow .mi-arrow { transform: rotate(90deg); display: block; width: 100%; text-align: left; padding: 2px 0; }
+}
+
 /* =====================================================================
    Cards
    ===================================================================== */
