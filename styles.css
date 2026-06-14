@@ -262,6 +262,22 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .cards.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 560px) { .cards.cols-2 { grid-template-columns: 1fr; } }
 
+/* Reusable icon badge (Seeker/Score modules, and anywhere a card wants one). */
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(237, 45, 106, 0.10);
+  color: var(--hawk-pink);
+  margin-bottom: 12px;
+  transition: transform 0.2s ease;
+}
+.icon-badge svg { width: 28px; height: 28px; }
+.card:hover .icon-badge { transform: scale(1.08) rotate(-3deg); }
+
 /* Partner cards (Home · Who we serve): an iconed badge per partner type. */
 .partner-icon {
   display: inline-flex;
