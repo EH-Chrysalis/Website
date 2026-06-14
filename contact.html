@@ -81,15 +81,15 @@
         <p class="section-eyebrow">Send us a note</p>
         <h2 class="section-title">Tell us what you're working on.</h2>
         <p class="lede" style="margin-bottom:26px;">Someone from the Office of the Founder reaches out <strong>within 24 hours</strong> — and a Context Brief is delivered within <strong>five business days</strong>.</p>
-        <form class="form" id="contactForm" novalidate>
+        <form class="form" id="contactForm" action="https://formspree.io/f/mwvjarrq" method="POST" enctype="multipart/form-data">
           <div class="form-grid">
-            <div class="field"><label for="cf-first">First name</label><input id="cf-first" type="text" autocomplete="given-name" required></div>
-            <div class="field"><label for="cf-last">Last name</label><input id="cf-last" type="text" autocomplete="family-name" required></div>
-            <div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" autocomplete="email" required></div>
-            <div class="field"><label for="cf-phone">Phone <span style="font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label><input id="cf-phone" type="tel" autocomplete="tel"></div>
+            <div class="field"><label for="cf-first">First name</label><input id="cf-first" name="first-name" type="text" autocomplete="given-name" required></div>
+            <div class="field"><label for="cf-last">Last name</label><input id="cf-last" name="last-name" type="text" autocomplete="family-name" required></div>
+            <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="cf-phone">Phone <span style="font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label><input id="cf-phone" name="phone" type="tel" autocomplete="tel"></div>
             <div class="field full">
               <label for="cf-type">Project type</label>
-              <select id="cf-type">
+              <select id="cf-type" name="project-type">
                 <option value="">Select one…</option>
                 <option>Context Brief request</option>
                 <option>Industry program (medtech / pharma)</option>
@@ -100,14 +100,21 @@
                 <option>Other / not sure</option>
               </select>
             </div>
-            <div class="field full"><label for="cf-msg">Question or comment</label><textarea id="cf-msg" required placeholder="Tell us a little about what you're building, or what you'd like to understand."></textarea></div>
+            <div class="field full"><label for="cf-msg">Question or comment</label><textarea id="cf-msg" name="message" required placeholder="Tell us a little about what you're building, or what you'd like to understand."></textarea></div>
+            <div class="field full"><label for="cf-file">Attach a one-pager, spec, or deck <span style="font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label><input id="cf-file" name="upload" type="file"></div>
           </div>
+          <input type="hidden" name="_subject" value="New inquiry from elephanthawk.com">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
           <div style="margin-top:22px;">
-            <button type="button" class="btn btn-primary" id="cf-send">Compose email →</button>
-            <span id="cf-note" class="form-note"></span>
+            <button type="submit" class="btn btn-primary" id="cf-send">Send →</button>
+            <span id="cf-note" class="form-note" role="status" aria-live="polite"></span>
           </div>
-          <p class="form-note" style="display:block;margin:18px 0 0;">This opens a pre-filled message in your own email app, addressed to us. We don't store form data on this site.</p>
+          <p class="form-note" style="display:block;margin:18px 0 0;">We'll only use this to reply — no spam. Or email <a href="mailto:office@elephanthawk.com">office@elephanthawk.com</a> directly.</p>
         </form>
+        <div id="cf-success" class="form-success" hidden>
+          <h3>Thank you — message received.</h3>
+          <p>Someone from the Office of the Founder will be in touch <strong>within 24 hours</strong>. If you requested a Context Brief, you'll have it within <strong>five business days</strong>.</p>
+        </div>
       </div>
     </section>
 

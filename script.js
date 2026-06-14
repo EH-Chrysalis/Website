@@ -59,38 +59,40 @@
     blocks.forEach(function (el) { io.observe(el); });
   }
 
-  /* --- 4. Contact form → compose a pre-filled email --------------------
-     The site is static, so there is no server. On submit we build a
-     mailto: link with the structured fields and open the visitor's own
-     email client. Nothing is stored. */
-  var sendBtn = document.getElementById("cf-send");
-  if (sendBtn) {
-    sendBtn.addEventListener("click", function () {
-      var val = function (id) {
-        var el = document.getElementById(id);
-        return el ? el.value.trim() : "";
-      };
-      var first = val("cf-first"), last = val("cf-last"), email = val("cf-email"),
-          phone = val("cf-phone"), type = val("cf-type"), msg = val("cf-msg");
+  /* --- 4. Contact form → POST to Formspree via fetch (stays on page) ---
+     Native required-field validation runs first (the form has no
+     `novalidate`), so this handler only fires when the form is valid. On
+     success the form is swapped for an inline confirmation. With JS off, the
+     form still POSTs normally to Formspree (graceful fallback). */
+  var contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
       var note = document.getElementById("cf-note");
-
-      if (!first || !last || !email || !msg) {
-        if (note) note.textContent = "Please add your name, email, and message.";
-        return;
-      }
-      if (note) note.textContent = "";
-
-      var subject = "Inquiry from " + first + " " + last + (type ? " — " + type : "");
-      var body =
-        "Name: " + first + " " + last + "\n" +
-        "Email: " + email + "\n" +
-        (phone ? "Phone: " + phone + "\n" : "") +
-        (type ? "Project type: " + type + "\n" : "") +
-        "\n" + msg + "\n";
-
-      window.location.href =
-        "mailto:office@elephanthawk.com?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
+      var success = document.getElementById("cf-success");
+      var btn = document.getElementById("cf-send");
+      if (note) note.textContent = "Sending…";
+      if (btn) btn.disabled = true;
+      fetch(contactForm.action, {
+        method: "POST",
+        body: new FormData(contactForm),
+        headers: { "Accept": "application/json" }
+      }).then(function (res) {
+        if (res.ok) {
+          if (note) note.textContent = "";
+          if (success) {
+            contactForm.setAttribute("hidden", "");
+            success.removeAttribute("hidden");
+            success.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        } else {
+          if (btn) btn.disabled = false;
+          if (note) note.textContent = "Something went wrong — please email office@elephanthawk.com.";
+        }
+      }).catch(function () {
+        if (btn) btn.disabled = false;
+        if (note) note.textContent = "Network error — please email office@elephanthawk.com.";
+      });
     });
   }
 
