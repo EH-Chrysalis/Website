@@ -290,7 +290,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   box-shadow: 0 20px 44px rgba(61, 51, 42, 0.12);
   text-decoration: none;
 }
-#note { scroll-margin-top: 96px; }   /* clear the sticky header when anchored */
+#note, #office-hours { scroll-margin-top: 96px; }   /* clear the sticky header when anchored */
 .path-icon {
   display: inline-flex;
   align-items: center;
@@ -343,6 +343,19 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .partner-icon svg { width: 28px; height: 28px; }
 .card.partner:hover .partner-icon { transform: scale(1.08) rotate(-3deg); }
 .card.partner .step-stage { margin-top: 0; }
+/* Small teaser link inside a card (e.g. office-hours on the Innovators card) */
+.card-teaser {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 16px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--mulberry);
+  text-decoration: none;
+}
+.card-teaser svg { width: 16px; height: 16px; flex: none; }
+.card-teaser:hover { text-decoration: underline; }
 .card {
   border: 1px solid var(--line);
   border-radius: 14px;
