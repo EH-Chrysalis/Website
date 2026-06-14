@@ -168,4 +168,22 @@
       });
     });
   }
+
+  /* --- 8. Flip tiles (SEMI layers) ------------------------------------
+     Hover and keyboard focus flip the tiles via CSS alone. This adds the
+     two cases CSS can't cover: a tap on touch devices, and Enter/Space
+     when a tile is focused. */
+  var flips = document.querySelectorAll(".flip");
+  if (flips.length) {
+    var noHover = window.matchMedia && window.matchMedia("(hover: none)").matches;
+    flips.forEach(function (card) {
+      var toggle = function () { card.classList.toggle("is-flipped"); };
+      card.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
+      });
+      // Only wire tap-to-flip on touch devices, so a desktop click doesn't
+      // leave a card stuck flipped after the mouse moves away.
+      if (noHover) card.addEventListener("click", toggle);
+    });
+  }
 })();

@@ -79,28 +79,28 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 76px;
+  min-height: 110px;            /* taller bar to hold the larger logo */
 }
 
-/* The wordmark lockup: chrysalis mark (left) + name (right) */
-.brand { display: flex; align-items: center; gap: 14px; color: var(--chrysalis); }
+/* The wordmark lockup: chrysalis mark (left) + name (right) — ~1.5× size */
+.brand { display: flex; align-items: center; gap: 18px; color: var(--chrysalis); }
 .brand:hover { text-decoration: none; }
-.brand svg { width: 30px; height: 30px; display: block; flex: none; }
+.brand svg { width: 45px; height: 45px; display: block; flex: none; }
 .brand .name {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 2.25rem;
   line-height: 1;
   letter-spacing: 0.01em;
 }
 .brand .tag {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.55rem;
+  font-size: 0.8rem;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--ash);
-  margin-top: 5px;
+  margin-top: 7px;
   font-weight: 600;
   white-space: nowrap;
 }
@@ -257,6 +257,27 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 /* When a section opens straight into cards (no heading above them), drop the
    46px gap so the cards don't sit doubly-indented below the section padding. */
 .container > .cards:first-child { margin-top: 0; }
+
+/* Reusable 2-up grid for four-card sections (collapses to one on phones). */
+.cards.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 560px) { .cards.cols-2 { grid-template-columns: 1fr; } }
+
+/* Partner cards (Home · Who we serve): an iconed badge per partner type. */
+.partner-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(237, 45, 106, 0.10);
+  color: var(--hawk-pink);
+  margin-bottom: 10px;
+  transition: transform 0.2s ease;
+}
+.partner-icon svg { width: 28px; height: 28px; }
+.card.partner:hover .partner-icon { transform: scale(1.08) rotate(-3deg); }
+.card.partner .step-stage { margin-top: 0; }
 .card {
   border: 1px solid var(--line);
   border-radius: 14px;
@@ -287,16 +308,84 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   margin: 12px 0 2px;
 }
 /* Five Gates row */
-.gates {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  margin-top: 46px;   /* match the 46px content gap used elsewhere */
+/* Five Gates as an inspection gauntlet: each gate is a seal that stamps in
+   (pops, with overshoot) in sequence on scroll, ending in a rotated CLEARED
+   rubber-stamp. The clearance metaphor matches a regulated-medtech audience. */
+.seals {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 50px;
 }
-.gate { text-align: center; border-top: 2px solid var(--hawk-pink); padding-top: 16px; }
-.gate b { display: block; font-family: var(--font-display); font-size: 1.25rem; color: var(--dusk); }
-.gate span { font-size: 0.85rem; color: var(--ash); }
-@media (max-width: 680px) { .gates { grid-template-columns: 1fr 1fr; } }
+.seal { flex: 0 0 auto; width: 120px; text-align: center; }
+.seal-badge {
+  width: 74px;
+  height: 74px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  border: 2.5px solid var(--hawk-pink);
+  box-shadow: inset 0 0 0 5px rgba(237, 45, 106, 0.10);
+  background: var(--wing-cream);
+  color: var(--hawk-pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.seal-badge svg { width: 34px; height: 34px; }
+.seal b { display: block; font-family: var(--font-display); font-size: 1.2rem; color: var(--dusk); }
+.seal-desc { display: block; font-size: 0.84rem; color: var(--ash); margin-top: 2px; line-height: 1.4; }
+
+/* faint chevrons between seals, a bolder arrow before the CLEARED stamp */
+.seal-link { flex: 0 0 auto; align-self: flex-start; margin-top: 26px; color: var(--line); font-size: 1.5rem; line-height: 1; }
+.seal-arrow { flex: 0 0 auto; align-self: flex-start; margin-top: 22px; color: var(--ash); font-size: 1.8rem; line-height: 1; }
+
+/* The terminal rubber-stamp */
+.seal--final { width: 150px; }
+.seal-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px auto 14px;
+  padding: 15px 20px;
+  border: 2.5px solid var(--mulberry);
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 4px rgba(139, 35, 66, 0.10);
+  color: var(--mulberry);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 1.05rem;
+  transform: rotate(-5deg);
+}
+.seal-stamp svg { width: 18px; height: 18px; }
+
+/* Stamp-in sequence (default / reduced-motion = fully stamped). */
+.reveal .seal-badge {
+  transform: scale(0.5) rotate(-12deg);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+  transition-delay: var(--d, 0s);
+}
+.reveal.in .seal-badge { transform: none; opacity: 1; }
+.reveal .seal--final .seal-stamp {
+  transform: rotate(8deg) scale(0.5);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+  transition-delay: 0.62s;
+}
+.reveal.in .seal--final .seal-stamp { transform: rotate(-5deg); opacity: 1; }
+
+/* On small screens, drop the connectors and let the seals wrap; CLEARED
+   sits on its own row. */
+@media (max-width: 720px) {
+  .seal-link, .seal-arrow { display: none; }
+  .seals { gap: 26px 16px; }
+  .seal { width: 30%; min-width: 100px; }
+  .seal--final { width: 100%; margin-top: 6px; }
+}
 
 /* Contact form -------------------------------------------------------- */
 .form { max-width: 660px; margin-top: 8px; }
@@ -399,6 +488,19 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   font-weight: 600;
   margin: 0 0 18px;
 }
+/* Credentials chips under the founder name */
+.creds { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 0 0 22px; padding: 0; }
+.creds li {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--cream-panel);
+  color: var(--chrysalis);
+}
+.creds li strong { color: var(--mulberry); }
 .founder-bio p { color: var(--chrysalis); max-width: 54ch; }
 .founder-contact-label {
   font-size: 0.78rem;
@@ -499,9 +601,13 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 }
 @media (max-width: 760px) {
   .nav-toggle { display: block; }
+  /* Dampen the enlarged logo on phones so the sticky bar stays reasonable */
+  .nav { min-height: 88px; }
+  .brand svg { width: 38px; height: 38px; }
+  .brand .name { font-size: 1.9rem; }
   .nav-links {
     position: absolute;
-    top: 76px; left: 0; right: 0;
+    top: 88px; left: 0; right: 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
@@ -563,6 +669,9 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
    "Four ways in" — iconed engagement cards + convergence cue (Approach)
    ===================================================================== */
 /* Top row of each card: icon on the left, step number quietly on the right. */
+/* Force the four engagement cards into a 2×2 (not auto-fit 4-up / 3+1). */
+.ways { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 560px) { .ways { grid-template-columns: 1fr; } }
 .way-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
 .ways .card-num { color: var(--ash); font-size: 1.05rem; }   /* number recedes; icon leads */
 .way-icon { color: var(--hawk-pink); display: inline-flex; transition: transform 0.2s ease; }
@@ -591,16 +700,74 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
    Each layer carries its own palette accent (set inline via --accent),
    so the four read as distinct, combinable building blocks.
    ===================================================================== */
-.semi .card.layer { border-top: 3px solid var(--accent); }
-.semi .layer-mark {
+/* Force the four SEMI tiles into a 2×2 (not the auto-fit 3+1), collapsing
+   to a single column on phones. */
+.semi { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 560px) { .semi { grid-template-columns: 1fr; } }
+
+/* Flip tiles: front shows the element + name; the component list lives on
+   the back, revealed on hover (mouse), focus (keyboard), or tap (touch,
+   via .is-flipped added in script.js). */
+.flip {
+  perspective: 1100px;
+  min-height: 268px;
+  cursor: pointer;
+  border-radius: 14px;
+  outline: none;
+}
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 268px;
+  transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.flip:hover .flip-inner,
+.flip:focus-visible .flip-inner,
+.flip.is-flipped .flip-inner { transform: rotateY(180deg); }
+.flip:focus-visible { box-shadow: 0 0 0 3px rgba(139, 35, 66, 0.35); }
+
+.flip-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 26px;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  border-radius: 14px;
+  background: var(--wing-cream);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.flip-back { transform: rotateY(180deg); background: var(--cream-panel); }
+/* Front: big letter + icon on one row, then name + a short descriptor. */
+.flip-top { display: flex; align-items: center; justify-content: space-between; }
+.flip .layer-mark {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 2.7rem;
   line-height: 1;
   color: var(--accent);
-  transition: transform 0.2s ease;
 }
-.semi .card.layer:hover .layer-mark { transform: translateY(-2px) scale(1.07); }
+.flip-icon { color: var(--accent); display: inline-flex; }
+.flip-icon svg { width: 30px; height: 30px; display: block; }
+.flip-front h3 { font-size: 1.45rem; margin: 10px 0 0; color: var(--dusk); }
+.flip-desc { margin: 6px 0 0; color: var(--chrysalis); font-size: 0.95rem; line-height: 1.5; }
+.flip-hint {
+  margin-top: auto;
+  padding-top: 14px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ash);
+}
+/* Back: title, component list, then an italic example. */
+.flip-back-title { font-family: var(--font-display); font-weight: 600; font-size: 1.35rem; color: var(--accent); margin: 0 0 10px; }
+.flip-back-list { margin: 0 0 12px; color: var(--chrysalis); font-size: 0.96rem; line-height: 1.55; }
+.flip-back-eg { margin: auto 0 0; color: var(--ash); font-size: 0.86rem; font-style: italic; line-height: 1.5; }
 
 /* S + E + M + I → any regulated device */
 .semi-compose {
@@ -632,6 +799,38 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
   font-weight: 600;
   font-size: clamp(1.3rem, 3vw, 1.9rem);
   color: var(--mulberry);
+}
+
+/* =====================================================================
+   Scope of work — the full discipline stack, run through Chrysalis (Approach)
+   8 workstreams in a 4×2 grid on dark; echoed as a compact strip on Home.
+   ===================================================================== */
+.scope {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px 24px;
+  margin-top: 48px;
+}
+.scope-item { border-top: 1px solid rgba(242, 231, 210, 0.18); padding-top: 18px; }
+.scope-icon { color: var(--hawk-pink); display: inline-flex; }
+.scope-icon svg { width: 30px; height: 30px; display: block; }
+.scope-item h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; margin: 12px 0 6px; color: var(--wing-cream); }
+.scope-item p { margin: 0; font-size: 0.92rem; line-height: 1.55; color: rgba(242, 231, 210, 0.78); }
+@media (max-width: 880px) { .scope { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .scope { grid-template-columns: 1fr; } }
+
+/* Home echo: a compact strip of the same workstreams, on light. */
+.scope-lead { margin: 28px 0 14px; color: var(--chrysalis); font-weight: 500; }
+.scope-strip { display: flex; flex-wrap: wrap; gap: 10px; }
+.scope-strip span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 7px 15px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--wing-cream);
+  color: var(--chrysalis);
 }
 
 /* =====================================================================
