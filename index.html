@@ -75,33 +75,41 @@
           <!-- The elephant hawk moth — the figure the brand is named for -->
           <svg viewBox="0 0 1200 1140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of an elephant hawk moth">
             <defs>
-              <linearGradient id="topWing" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#ED2D6A"/><stop offset="65%" stop-color="#8B2342"/><stop offset="100%" stop-color="#3D332A"/>
+              <linearGradient id="forewing" x1="0.15" y1="0" x2="0.85" y2="1">
+                <stop offset="0%" stop-color="#ED2D6A"/><stop offset="70%" stop-color="#8B2342"/><stop offset="100%" stop-color="#5e1730"/>
               </linearGradient>
-              <linearGradient id="bottomWing" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#828B3D"/><stop offset="100%" stop-color="#3D332A"/>
+              <linearGradient id="hindwing" x1="0.3" y1="0" x2="0.7" y2="1">
+                <stop offset="0%" stop-color="#9aa24a"/><stop offset="100%" stop-color="#5b6129"/>
               </linearGradient>
               <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#ED2D6A"/><stop offset="100%" stop-color="#8B2342"/>
+                <stop offset="0%" stop-color="#ED2D6A"/><stop offset="55%" stop-color="#8B2342"/><stop offset="100%" stop-color="#5e1730"/>
               </linearGradient>
             </defs>
-            <ellipse cx="380" cy="660" rx="280" ry="170" fill="url(#bottomWing)" opacity="0.92"/>
-            <ellipse cx="820" cy="660" rx="280" ry="170" fill="url(#bottomWing)" opacity="0.92"/>
-            <path d="M600,420 C400,250 200,260 170,420 C150,540 280,640 450,580 C530,560 600,510 600,470 Z" fill="url(#topWing)"/>
-            <path d="M600,420 C800,250 1000,260 1030,420 C1050,540 920,640 750,580 C670,560 600,510 600,470 Z" fill="url(#topWing)"/>
-            <path d="M210,400 Q400,420 590,480" stroke="#F2E7D2" stroke-width="4" fill="none" opacity="0.45"/>
-            <path d="M990,400 Q800,420 610,480" stroke="#F2E7D2" stroke-width="4" fill="none" opacity="0.45"/>
-            <path d="M250,540 Q420,560 590,580" stroke="#828B3D" stroke-width="3" fill="none" opacity="0.6"/>
-            <path d="M950,540 Q780,560 610,580" stroke="#828B3D" stroke-width="3" fill="none" opacity="0.6"/>
-            <ellipse cx="600" cy="600" rx="48" ry="260" fill="url(#bodyGrad)"/>
-            <ellipse cx="600" cy="660" rx="34" ry="6" fill="#F2E7D2" opacity="0.35"/>
-            <ellipse cx="600" cy="730" rx="30" ry="6" fill="#F2E7D2" opacity="0.35"/>
-            <ellipse cx="600" cy="790" rx="26" ry="5" fill="#F2E7D2" opacity="0.35"/>
-            <ellipse cx="600" cy="445" rx="42" ry="65" fill="#F2E7D2"/>
-            <circle cx="600" cy="350" r="32" fill="#F2E7D2"/>
-            <path d="M586,344 Q558,280 524,250" stroke="#F2E7D2" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M614,344 Q642,280 676,250" stroke="#F2E7D2" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <ellipse cx="600" cy="440" rx="14" ry="50" fill="#8B2342" opacity="0.4"/>
+            <!-- Hindwings (olive), behind -->
+            <path d="M600,520 C480,600 380,702 412,802 C462,862 572,706 600,560 Z" fill="url(#hindwing)"/>
+            <path d="M600,520 C720,600 820,702 788,802 C738,862 628,706 600,560 Z" fill="url(#hindwing)"/>
+            <!-- Forewings (pink), swept up and out -->
+            <path d="M600,478 C440,330 232,300 150,372 C96,472 300,548 600,506 Z" fill="url(#forewing)"/>
+            <path d="M600,478 C760,330 968,300 1050,372 C1104,472 900,548 600,506 Z" fill="url(#forewing)"/>
+            <!-- Pale streaks (the moth's signature wing lines) -->
+            <path d="M210,378 C340,366 470,404 575,472" stroke="#F2E7D2" stroke-width="5" fill="none" opacity="0.5" stroke-linecap="round"/>
+            <path d="M990,378 C860,366 730,404 625,472" stroke="#F2E7D2" stroke-width="5" fill="none" opacity="0.5" stroke-linecap="round"/>
+            <path d="M470,694 C522,650 566,608 596,566" stroke="#F2E7D2" stroke-width="4" fill="none" opacity="0.32" stroke-linecap="round"/>
+            <path d="M730,694 C678,650 634,608 604,566" stroke="#F2E7D2" stroke-width="4" fill="none" opacity="0.32" stroke-linecap="round"/>
+            <!-- Body: tapered abdomen, on top of the wing roots -->
+            <path d="M600,322 C566,340 556,430 560,520 C563,650 585,802 600,842 C615,802 637,650 640,520 C644,430 634,340 600,322 Z" fill="url(#bodyGrad)"/>
+            <!-- Abdomen segment stripes -->
+            <ellipse cx="600" cy="596" rx="33" ry="6" fill="#F2E7D2" opacity="0.38"/>
+            <ellipse cx="600" cy="664" rx="29" ry="6" fill="#F2E7D2" opacity="0.38"/>
+            <ellipse cx="600" cy="730" rx="23" ry="5" fill="#F2E7D2" opacity="0.38"/>
+            <ellipse cx="600" cy="788" rx="17" ry="4" fill="#F2E7D2" opacity="0.38"/>
+            <!-- Head + eyes -->
+            <circle cx="600" cy="336" r="34" fill="#F2E7D2"/>
+            <circle cx="585" cy="338" r="6" fill="#8B2342"/>
+            <circle cx="615" cy="338" r="6" fill="#8B2342"/>
+            <!-- Antennae -->
+            <path d="M584,320 Q546,254 510,236" stroke="#F2E7D2" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <path d="M616,320 Q654,254 690,236" stroke="#F2E7D2" stroke-width="8" fill="none" stroke-linecap="round"/>
           </svg>
           <figcaption class="hero-caption">Deilephila elpenor — the elephant hawk moth</figcaption>
         </figure>
