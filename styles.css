@@ -257,6 +257,20 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 }
 .stat .label { margin-top: 10px; color: var(--ash); font-size: 0.98rem; letter-spacing: 0.02em; }
 
+/* Standards / regulatory-pathway strip — table-stakes credibility */
+.standards { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 14px; padding: 28px 0 2px; }
+.standards-lead { font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--ash); }
+.std {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--wing-cream);
+  color: var(--chrysalis);
+}
+
 /* =====================================================================
    Cards
    ===================================================================== */
