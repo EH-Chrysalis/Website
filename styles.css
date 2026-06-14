@@ -874,6 +874,7 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 /* Home echo: a compact strip of the same workstreams, on light. */
 .scope-lead { margin: 28px 0 14px; color: var(--chrysalis); font-weight: 500; }
 .scope-strip { display: flex; flex-wrap: wrap; gap: 10px; }
+.scope-strip b { color: var(--mulberry); margin-right: 5px; }
 .scope-strip span {
   font-size: 0.85rem;
   font-weight: 600;
