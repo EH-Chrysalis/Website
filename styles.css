@@ -62,7 +62,7 @@ a:hover { text-decoration: underline; }
 }
 
 /* Display type uses the serif; body stays sans -------------------------*/
-h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; letter-spacing: 0.005em; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing: 0.005em; }
 
 /* =====================================================================
    Header / navigation
@@ -834,7 +834,6 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 .band .small { font-family: var(--font-body); font-size: 1rem; color: rgba(242,231,210,0.8); margin-top: 14px; letter-spacing: 0.04em; }
 /* Metamorphosis motif (caterpillar → chrysalis → moth) */
 .band .motif { width: clamp(220px, 44%, 300px); height: auto; display: block; margin: 0 auto 26px; }
-.motif-divider { width: clamp(180px, 30%, 230px); height: auto; display: block; margin: 4px auto; opacity: 0.9; }
 
 /* =====================================================================
    Footer
