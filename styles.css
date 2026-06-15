@@ -203,11 +203,16 @@ h1, h2, h3, .display { font-family: var(--font-display); font-weight: 600; lette
 }
 .hero .container {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr;
   align-items: center;
   gap: clamp(24px, 5vw, 64px);
-  padding-block: clamp(64px, 10vw, 128px);
+  padding-block: clamp(72px, 12vw, 150px);
 }
+/* Single-column statement hero: cap each element's measure so the big display
+   type wraps to a few strong lines rather than stretching edge to edge. */
+.hero-copy { max-width: 60rem; }
+.hero-copy h1 { max-width: 15ch; }
+.hero-copy p { max-width: 52ch; }
 /* Let grid children shrink below their content's intrinsic width so the
    moth SVG can't blow the hero wider than the viewport (mobile overflow). */
 .hero .container > * { min-width: 0; }
